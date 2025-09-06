@@ -1,5 +1,6 @@
 # --- Flask API for PDE calculation ---
 from flask import Flask, request, jsonify
+from flask import send_from_directory
 from flask_cors import CORS
 from dataclasses import dataclass
 from typing import Optional
@@ -91,6 +92,12 @@ def compute_pde(inputs: PDEInputs) -> PDEResult:
         raise ValueError("Composite denominator must be > 0")
     pde = numerator / denominator
     return PDEResult(pde_mg_per_day=pde, f1=f1, f2=f2, f3=f3, f4=f4, f5=f5)
+
+
+@app.route('/')
+def serve_index():
+    return send_from_directory('static', 'index.html')
+
 
 @app.route('/api/calculate', methods=['POST'])
 def api_calculate():
