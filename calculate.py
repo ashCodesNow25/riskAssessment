@@ -61,6 +61,7 @@ class PDEInputs:
 @dataclass
 class PDEResult:
     pde_mg_per_day: float
+    oel_mg_cubic_meter: float
     f1: float
     f2: float
     f3: float
