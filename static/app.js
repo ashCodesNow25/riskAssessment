@@ -35,6 +35,7 @@ document.getElementById('pdeForm').addEventListener('submit', function(e) {
             document.getElementById('f1Value').textContent = '-';
             document.getElementById('totalFactor').textContent = '-';
             document.getElementById('pdeValue').textContent = 'Error';
+            document.getElementById('oelValue').textContent = 'Error';
             document.getElementById('formulaDisplay').textContent = data.error;
             document.getElementById('warnings').style.display = 'none';
             return;
@@ -42,6 +43,7 @@ document.getElementById('pdeForm').addEventListener('submit', function(e) {
         document.getElementById('f1Value').textContent = data.f1;
         document.getElementById('totalFactor').textContent = data.totalFactor.toFixed(0);
         document.getElementById('pdeValue').textContent = data.pde.toFixed(3) + ' mg/day';
+        document.getElementById('oelValue').textContent = data.oel.toFixed(3) + ' mg/m3';
         const formulaText = `PDE = (${noael} mg/kg/day × ${humanWeight} kg) ÷ (${data.f1} × ${data.f2} × ${data.f3} × ${data.f4} × ${data.f5})\nPDE = ${(noael * humanWeight).toFixed(3)} ÷ ${data.totalFactor} = ${data.pde.toFixed(3)} mg/day`;
         document.getElementById('formulaDisplay').textContent = formulaText;
         // Warnings
@@ -68,6 +70,7 @@ document.getElementById('pdeForm').addEventListener('submit', function(e) {
         document.getElementById('f1Value').textContent = '-';
         document.getElementById('totalFactor').textContent = '-';
         document.getElementById('pdeValue').textContent = 'Error';
+        document.getElementById('oelValue').textContent = 'Error';
         document.getElementById('formulaDisplay').textContent = 'API error: ' + err;
         document.getElementById('warnings').style.display = 'none';
     });

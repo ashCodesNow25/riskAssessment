@@ -90,7 +90,8 @@ def compute_pde(inputs: PDEInputs) -> PDEResult:
     if denominator <= 0:
         raise ValueError("Composite denominator must be > 0")
     pde = numerator / denominator
-    return PDEResult(pde_mg_per_day=pde, f1=f1, f2=f2, f3=f3, f4=f4, f5=f5)
+    oel = pde /10
+    return PDEResult(pde_mg_per_day=pde, oel_mg_cubic_meter=oel, f1=f1, f2=f2, f3=f3, f4=f4, f5=f5)
 
 # Serve the frontend
 @app.route('/')
@@ -129,6 +130,7 @@ def api_calculate():
         result = compute_pde(inputs)
         return jsonify({
             'pde': result.pde_mg_per_day,
+            'oel': result.oel_mg_cubic_meter,
             'f1': result.f1,
             'f2': result.f2,
             'f3': result.f3,
