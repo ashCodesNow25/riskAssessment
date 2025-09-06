@@ -268,12 +268,6 @@
                         <div>
                             <label for="species">Species</label>
                             <select id="species" required>
-                                <option value="">Select Species</option>
-                                <option value="mouse">Mouse</option>
-                                <option value="rat">Rat</option>
-                                <option value="rabbit">Rabbit</option>
-                                <option value="dog">Dog</option>
-                                <option value="monkey">Monkey</option>
                             </select>
                         </div>
                         <div>
@@ -343,6 +337,15 @@
         </div>
     </div>
     <script>
+        fetch('/api/species')
+            .then(res => res.json())
+            .then(speciesList => {
+                const speciesSelect = document.getElementById('species');
+                speciesSelect.innerHTML = '<option value="">Select Species</option>';
+                speciesList.forEach(species => {
+                    speciesSelect.innerHTML += `<option value="${species}">${species.charAt(0).toUpperCase() + species.slice(1)}</option>`;
+                });
+            });
         document.getElementById('pdeForm').addEventListener('submit', function(e) {
             e.preventDefault();
             // Hide results while loading

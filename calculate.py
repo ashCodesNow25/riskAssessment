@@ -98,6 +98,10 @@ def serve_index():
     return send_from_directory('static', 'index.html')
 
 # API endpoint
+@app.route('/api/species', methods=['GET'])
+def get_species():
+    return jsonify(list(SPECIES_F1.keys()))
+
 @app.route('/api/calculate', methods=['POST'])
 def api_calculate():
     data = request.get_json()
