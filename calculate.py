@@ -12,6 +12,7 @@ SPECIES_F1 = {
     "rat": 5.0,
     "rabbit": 2.5,
     "dog": 2.0,
+    "monkey" : 1.5,
     "human": 1.0,
 }
 
@@ -180,6 +181,7 @@ SPECIES_F1 = {
     "rat": 5.0,
     "rabbit": 2.5,
     "dog": 2.0,
+    "monkey" : 1.5,
     "human": 1.0,
 }
 
