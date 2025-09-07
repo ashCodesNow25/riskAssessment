@@ -50,6 +50,18 @@ A web-based Permitted Daily Exposure (PDE) calculator for risk assessment in pha
 6. **Enter your data and click "Calculate PDE Now"**
    - The results will appear below the button.
 
+7. **Deploy Flask Backend**
+Go to https://dashboard.render.com/
+Click New + → Web Service
+Connect your GitHub account and select your repo (riskAssessment)
+Set:
+Environment: Python
+Build Command: pip install -r requirements.txt
+Start Command: python calculate.py
+Click Create Web Service
+Wait for the build and deploy to finish.
+You’ll get a public URL like https://pde-backend-xxxx.onrender.com   
+
 ## API Usage
 You can also use the backend directly via POST requests:
 
